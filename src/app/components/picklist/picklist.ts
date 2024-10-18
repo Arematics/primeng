@@ -140,6 +140,9 @@ import { FormsModule } from '@angular/forms';
                 [attr.data-pc-group-section]="'listWrapper'"
             >
                 <p-listbox
+                    cdkDropList
+                    [cdkDropListData]="source"
+                    (cdkDropListDropped)="onDrop($event, SOURCE_LIST)"
                     #sourcelist
                     [multiple]="true"
                     [options]="source"
@@ -260,6 +263,9 @@ import { FormsModule } from '@angular/forms';
                 [attr.data-pc-group-section]="'listwrapper'"
             >
                 <p-listbox
+                    cdkDropList
+                    [cdkDropListData]="target"
+                    (cdkDropListDropped)="onDrop($event, TARGET_LIST)"
                     #targetlist
                     [multiple]="true"
                     [options]="target"
@@ -1804,7 +1810,7 @@ export class PickList extends BaseComponent implements AfterViewChecked, AfterCo
                         flex-direction: row;
                     }
 
-                  
+
                 }`;
 
                 this.renderer.setProperty(this.styleElement, 'innerHTML', innerHTML);

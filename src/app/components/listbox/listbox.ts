@@ -48,6 +48,7 @@ import { ListBoxStyle } from './style/listboxstyle';
 import { BlankIcon } from 'primeng/icons/blank';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputIconModule } from 'primeng/inputicon';
+import {CdkDrag, DragDropModule} from "@angular/cdk/drag-drop";
 
 export const LISTBOX_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
@@ -216,6 +217,8 @@ export const LISTBOX_VALUE_ACCESSOR: any = {
                             </ng-container>
                             <ng-container *ngIf="!isOptionGroup(option)">
                                 <li
+                                    cdkDrag
+                                    [cdkDragData]="option"
                                     pRipple
                                     class="p-listbox-option"
                                     role="option"
@@ -1602,6 +1605,7 @@ export class Listbox extends BaseComponent implements AfterContentInit, OnInit, 
         InputTextModule,
         BlankIcon,
         FormsModule,
+        DragDropModule
     ],
     exports: [Listbox, SharedModule, ScrollerModule],
     declarations: [Listbox],
